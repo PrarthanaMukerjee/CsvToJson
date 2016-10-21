@@ -51,13 +51,14 @@ appendFile="./IndiaST2011.csv";
 DeleteFirst(appendFile);
 ReadAppend(file,appendFile);
 
-
+//creating readLine
 var rlemitter = rl.createInterface(
 {
  input:fs.createReadStream("India2011.csv"),
  output:fs.createWriteStream("age.json")
 });
 
+//Read line by line
 rlemitter.on('line',function(line)
 {
  //on reading file line by line
@@ -90,9 +91,9 @@ rlemitter.on('line',function(line)
 });
 rlemitter.on("close", function(close){
   var keys = Object.keys(arr[0]);
-  for(var i=0;i<arr.length;i++)
+  for(var i=0; i<arr.length; i++)
   {
-    for(var j=i+1;j<arr.length;j++)
+    for(var j=i+1; j<arr.length; j++)
      {
        if(arr[i][keys[0]]==arr[j][keys[0]])
        {
@@ -108,7 +109,4 @@ rlemitter.on("close", function(close){
   });
   fs.truncate('./IndiaSC2011.csv');
   fs.truncate('./IndiaST2011.csv');
-});
-fs.writeFile('age.json',"", (err) => {
-if (err) throw err;
 });
